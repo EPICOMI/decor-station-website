@@ -136,6 +136,7 @@ main {
   position: relative;
   z-index: 1001;
   padding: 0;
+  margin-left: auto;
 }
 
 .hamburger-btn span {
@@ -152,6 +153,10 @@ main {
 .hamburger-btn span:nth-child(1) { top: 0; }
 .hamburger-btn span:nth-child(2) { top: 10px; }
 .hamburger-btn span:nth-child(3) { top: 20px; }
+
+body.menu-open .hamburger-btn span {
+  background: var(--bodytext);
+}
 
 body.menu-open .hamburger-btn span:nth-child(1) {
   top: 10px;
@@ -201,7 +206,7 @@ body.menu-open .site-nav {
 .site-nav a {
   display: block;
   padding: 0.75rem 0;
-  color: var(--text);
+  color: var(--bodytext);
   text-decoration: none;
   font-size: 1rem;
   border-bottom: 1px solid #eee;
