@@ -15,14 +15,22 @@
       <img src="/images/logo.png" alt="Decor Station" class="logo">
     </a>
     <h1>DECOR STATION <span class="tagline">by Sonia</span></h1>
+
+    <button
+      class="hamburger-btn"
+      id="menuToggleBtn"
+      aria-expanded="false"
+      aria-label="Open menu"
+      aria-controls="siteNav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
-  <input type="checkbox" id="menu-toggle" class="menu-toggle">
-  <label for="menu-toggle" class="hamburger">
-    <span></span><span></span><span></span>
-  </label>
+  <div class="overlay" id="menuOverlay"></div>
 
-  <nav class="site-nav">
+  <nav class="site-nav" id="siteNav">
     <a href="/">Home</a>
     <a href="/catalog/">Catalog</a>
     <a href="/about/">About</a>
@@ -46,5 +54,6 @@
   </footer>
 
   <script src="/js/cycle.js"></script>
+  <script src="/js/menu.js"></script>
 </body>
 </html>
