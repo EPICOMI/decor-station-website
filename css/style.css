@@ -19,6 +19,7 @@ body {
   align-items: center;
   padding: 2rem 5%;
   border-bottom: 1px solid #e5ddd3;
+  position: relative;
 }
 
 header {
@@ -126,45 +127,88 @@ main {
   color: var(--accent);
 }
 
-.menu-toggle { display: none; }
-
-.hamburger {
-  display: block;
+.hamburger-btn {
+  background: none;
+  border: none;
   cursor: pointer;
-  width: 30px;
-  position: absolute;
-  top: 2rem;
-  right: 5%;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  z-index: 1001;
+  padding: 0;
 }
 
-.hamburger span {
+.hamburger-btn span {
   display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
   height: 3px;
-  margin: 6px 0;
   background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+}
+
+.hamburger-btn span:nth-child(1) { top: 0; }
+.hamburger-btn span:nth-child(2) { top: 10px; }
+.hamburger-btn span:nth-child(3) { top: 20px; }
+
+body.menu-open .hamburger-btn span:nth-child(1) {
+  top: 10px;
+  transform: rotate(45deg);
+}
+body.menu-open .hamburger-btn span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+body.menu-open .hamburger-btn span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-45deg);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+body.menu-open .overlay {
+  opacity: 1;
+  visibility: visible;
 }
 
 .site-nav {
   position: fixed;
   top: 0;
-  right: -260px;
+  right: -280px;
   width: 260px;
   height: 100%;
   background: #fff;
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem 1.5rem;
   transition: right 0.3s ease;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.15);
+}
+
+body.menu-open .site-nav {
+  right: 0;
 }
 
 .site-nav a {
   display: block;
-  padding: 0.6rem 0;
-  color: var(--bodytext);
+  padding: 0.75rem 0;
+  color: var(--text);
   text-decoration: none;
+  font-size: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
-.menu-toggle:checked ~ .site-nav {
-  right: 0;
+.site-nav a:hover {
+  color: var(--accent);
 }
 
 .logo {
