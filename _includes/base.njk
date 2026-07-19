@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }} | Decor Station</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/">
+      <img src="/images/logo.png" alt="Decor Station" class="logo">
+    </a>
+    <h1>DECOR STATION <span class="tagline">by Sonia</span></h1>
+  </header>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="hamburger">
+    <span></span><span></span><span></span>
+  </label>
+
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/catalog/">Catalog</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+    <hr>
+    <a href="/catalog/?cat=Vases">Vases</a>
+    <a href="/catalog/?cat=Mirrors">Mirrors</a>
+    <a href="/catalog/?cat=Lighting">Lighting</a>
+  </nav>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <nav class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <p>&copy; 2026 Decor Station</p>
+  </footer>
+
+  <script src="/js/cycle.js"></script>
+</body>
+</html>

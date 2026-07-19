@@ -1,0 +1,31 @@
+---
+title: Catalog
+layout: base.njk
+---
+
+<div class="catalog-grid">
+  {% for item in products %}
+    <div class="product-card">
+      <div class="image-cycler">
+        {% for img in item.images %}
+          <img src="{{ img }}" alt="{{ item.name }}" class="{{ 'active' if loop.first }}">
+        {% endfor %}
+      </div>
+      <h2>{{ item.name }}</h2>
+      <p class="category">{{ item.category }}</p>
+      <p>{{ item.description }}</p>
+      {% if item.price %}
+        <p class="price">{{ item.price }}</p>
+      {% endif %}
+
+      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
+         class="btn-buy">
+        Buy
+      </a>
+      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
+         class="btn-info">
+        Find out more
+      </a>
+    </div>
+  {% endfor %}
+</div>

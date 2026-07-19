@@ -1,0 +1,34 @@
+[
+  {
+    "id": "cutlery-sets-2025",
+    "name": "Exclusive Cutlery Set",
+    "category": "Cutlery",
+    "images": [
+      "/images/cutlery-sets-2025-01.jpg",
+      "/images/cutlery-sets-2025-02.jpg",
+      "/images/cutlery-sets-2025-03.jpg",
+      "/images/cutlery-sets-2025-04.jpg"
+    ],
+    "description": "Exclusive cutlery set, complete with artsy printing.",
+    "price": "SGD 30",
+    "featured": true
+  },
+  {
+    "id": "wall-mirror-round-gold",
+    "name": "Round Gold Wall Mirror",
+    "category": "Mirrors",
+    "image": "/images/wall-mirror-round-gold.jpg",
+    "description": "Metal-framed round mirror, 60cm diameter, brushed gold finish.",
+    "price": "SGD 89",
+    "featured": false
+  },
+  {
+    "id": "",
+    "name": "",
+    "category": "",
+    "image": "",
+    "description": "",
+    "price": "",
+    "featured": true
+  }
+]
