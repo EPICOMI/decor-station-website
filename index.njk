@@ -16,10 +16,10 @@ layout: base.njk
       <div class="image-cycler">
         {% if item.images %}
           {% for img in item.images %}
-            <img src="{{ img }}" alt="{{ item.name }}" class="{{ 'active' if loop.first }}">
+            <img src="{{ img | relativeUrl(page.url) }}" alt="{{ item.name }}">
           {% endfor %}
         {% elif item.image %}
-          <img src="{{ item.image }}" alt="{{ item.name }}" class="active">
+          <img src="{{ item.image | relativeUrl(page.url) }}" alt="{{ item.name }}">
         {% endif %}
       </div>
 

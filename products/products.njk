@@ -23,7 +23,7 @@ layout: base.njk
       {% set allImgs = item.images if item.images else ([item.image] if item.image else []) %}
       {% for img in allImgs %}
         <img
-          src="{{ img }}"
+          src="{{ img | relativeUrl(page.url) }}"
           alt="{{ item.name }} – image {{ loop.index }}"
           class="pd-img{{ ' active' if loop.first }}"
           draggable="false"
