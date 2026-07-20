@@ -5,11 +5,18 @@ layout: base.njk
 
 <div class="catalog-grid">
   {% for item in products %}
+    {% if item.id %}
+    <a href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}" class="product-card-link">
+    {% endif %}
     <div class="product-card">
       <div class="image-cycler">
-        {% for img in item.images %}
-          <img src="{{ img }}" alt="{{ item.name }}" class="{{ 'active' if loop.first }}">
-        {% endfor %}
+        {% if item.images %}
+          {% for img in item.images %}
+            <img src="{{ img }}" alt="{{ item.name }}" class="{{ 'active' if loop.first }}">
+          {% endfor %}
+        {% elif item.image %}
+          <img src="{{ item.image }}" alt="{{ item.name }}" class="active">
+        {% endif %}
       </div>
       <h2>{{ item.name }}</h2>
       <p class="category">{{ item.category }}</p>
@@ -19,13 +26,14 @@ layout: base.njk
       {% endif %}
 
       <a href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
-         class="btn-buy">
+         class="btn-buy" onclick="event.stopPropagation()">
         Buy
       </a>
       <a href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
-         class="btn-info">
+         class="btn-info" onclick="event.stopPropagation()">
         Find out more
       </a>
     </div>
+    {% if item.id %}</a>{% endif %}
   {% endfor %}
 </div>

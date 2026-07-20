@@ -55,6 +55,13 @@ main {
   gap: 2rem;
 }
 
+/* Make the card wrapper link invisible */
+.product-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .product-card {
   background: #fff;
   border-radius: 12px;
@@ -264,4 +271,163 @@ footer {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+/* =============================================
+   PRODUCT DETAIL PAGE
+   ============================================= */
+
+.product-detail {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Gallery (left column) ── */
+.pd-gallery {
+  flex: 0 0 55%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pd-image-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f5f0ec;
+  cursor: zoom-in;
+}
+
+.pd-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.15s ease;
+  transform-origin: center center;
+  will-change: transform;
+  user-select: none;
+}
+
+.pd-img.active {
+  opacity: 1;
+}
+
+/* Arrow buttons */
+.pd-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.15s ease, opacity 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bodytext);
+}
+
+.pd-arrow:hover {
+  background: #fff;
+}
+
+.pd-prev { left: 0.5rem; }
+.pd-next { right: 0.5rem; }
+
+/* Dot indicators */
+.pd-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.pd-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pd-dot.active {
+  background: var(--accent);
+}
+
+/* ── Info panel (right column) ── */
+.pd-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.pd-info h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.pd-info .category {
+  margin: 0;
+}
+
+.pd-desc {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.pd-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--bodytext);
+}
+
+.pd-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.pd-actions .btn-buy,
+.pd-actions .btn-info {
+  margin: 0;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.95rem;
+}
+
+/* ── Responsive: stack on mobile ── */
+@media (max-width: 700px) {
+  .product-detail {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+  .pd-gallery {
+    flex: none;
+    width: 100%;
+  }
 }
