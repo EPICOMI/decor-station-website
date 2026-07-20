@@ -157,6 +157,10 @@ main {
 .hamburger-btn span:nth-child(2) { top: 10px; }
 .hamburger-btn span:nth-child(3) { top: 20px; }
 
+body.menu-open .hamburger-btn span {
+  background: var(--bodytext);
+}
+
 body.menu-open .hamburger-btn span:nth-child(1) {
   top: 10px;
   transform: rotate(45deg);
