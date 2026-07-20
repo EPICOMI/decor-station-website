@@ -226,6 +226,14 @@ body.menu-open .site-nav {
   margin-right: 0.5rem;
 }
 
+/* About page */
+.page-about main h1 { color: #fc7f2b; }
+.page-about main p { color: #fefaf8; }
+
+/* Contact page */
+.page-contact-us main h1 { color: #fc7f2b; }
+.page-contact-us main p { color: #fefaf8; }
+
 footer {
   text-align: center;
   padding: 2rem 0;
