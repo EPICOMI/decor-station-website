@@ -1,0 +1,65 @@
+---
+pagination:
+  data: products
+  size: 1
+  alias: item
+  addAllPagesToCollections: true
+permalink: "products/{{ item.id }}/"
+layout: base.njk
+---
+
+{% if item.id %}
+<div class="product-detail">
+
+  {# ── Left: image gallery ── #}
+  <div class="pd-gallery">
+    <button class="pd-arrow pd-prev" aria-label="Previous image">&#8249;</button>
+
+    <div class="pd-image-stage">
+      {% set allImgs = item.images if item.images else ([item.image] if item.image else []) %}
+      {% for img in allImgs %}
+        <img
+          src="{{ img }}"
+          alt="{{ item.name }} – image {{ loop.index }}"
+          class="pd-img{{ ' active' if loop.first }}"
+          draggable="false"
+        >
+      {% endfor %}
+    </div>
+
+    <button class="pd-arrow pd-next" aria-label="Next image">&#8250;</button>
+
+    {% if allImgs | length > 1 %}
+    <div class="pd-dots">
+      {% for img in allImgs %}
+        <span class="pd-dot{{ ' active' if loop.first }}" data-index="{{ loop.index0 }}"></span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  {# ── Right: details ── #}
+  <div class="pd-info">
+    <p class="category">{{ item.category }}</p>
+    <h2>{{ item.name }}</h2>
+    <p class="pd-desc">{{ item.description }}</p>
+    {% if item.price %}
+      <p class="price pd-price">{{ item.price }}</p>
+    {% endif %}
+
+    <div class="pd-actions">
+      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
+         class="btn-buy">
+        Buy
+      </a>
+      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
+         class="btn-info">
+        Find out more
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script src="{{ '/js/product-gallery.js' | relativeUrl(page.url) }}"></script>
+{% endif %}
