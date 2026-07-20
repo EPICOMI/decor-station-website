@@ -7,12 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ '/css/style.css' | relativeUrl(page.url) }}">
 </head>
 <body>
   <header class="site-header">
-    <a href="/">
-      <img src="/images/logo.png" alt="Decor Station" class="logo">
+    <a href="{{ '/' | relativeUrl(page.url) }}">
+      <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station" class="logo">
     </a>
     <h1>DECOR STATION <span class="tagline">by Sonia</span></h1>
 
@@ -31,14 +31,14 @@
   <div class="overlay" id="menuOverlay"></div>
 
   <nav class="site-nav" id="siteNav">
-    <a href="/">Home</a>
-    <a href="/catalog/">Catalog</a>
-    <a href="/about/">About</a>
-    <a href="/contact/">Contact</a>
+    <a href="{{ '/' | relativeUrl(page.url) }}">Home</a>
+    <a href="{{ '/catalog/' | relativeUrl(page.url) }}">Catalog</a>
+    <a href="{{ '/about/' | relativeUrl(page.url) }}">About</a>
+    <a href="{{ '/contact/' | relativeUrl(page.url) }}">Contact</a>
     <hr>
-    <a href="/catalog/?cat=Vases">Vases</a>
-    <a href="/catalog/?cat=Mirrors">Mirrors</a>
-    <a href="/catalog/?cat=Lighting">Lighting</a>
+    <a href="{{ '/catalog/?cat=Vases' | relativeUrl(page.url) }}">Vases</a>
+    <a href="{{ '/catalog/?cat=Mirrors' | relativeUrl(page.url) }}">Mirrors</a>
+    <a href="{{ '/catalog/?cat=Lighting' | relativeUrl(page.url) }}">Lighting</a>
   </nav>
 
   <main>
@@ -47,13 +47,13 @@
 
   <footer>
     <nav class="footer-links">
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
+      <a href="{{ '/about/' | relativeUrl(page.url) }}">About</a>
+      <a href="{{ '/contact/' | relativeUrl(page.url) }}">Contact</a>
     </nav>
     <p>&copy; 2026 Decor Station</p>
   </footer>
 
-  <script src="/js/cycle.js"></script>
-  <script src="/js/menu.js"></script>
+  <script src="{{ '/js/cycle.js' | relativeUrl(page.url) }}"></script>
+  <script src="{{ '/js/menu.js' | relativeUrl(page.url) }}"></script>
 </body>
 </html>
