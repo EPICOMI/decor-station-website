@@ -8,11 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/css/style.css' | relativeUrl(page.url) }}">
+  <link rel="preload" as="image" href="{{ '/images/logo.png' | relativeUrl(page.url) }}">
 </head>
 <body class="page-{{ title | lower | replace(' ', '-') }}">
   <header class="site-header">
     <a href="{{ '/' | relativeUrl(page.url) }}">
-      <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station" class="logo">
+      <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station" class="logo" width="2048" height="2048" fetchpriority="high">
     </a>
     <h1>DECOR STATION <span class="tagline">by Sonia</span></h1>
 

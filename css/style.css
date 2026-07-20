@@ -12,6 +12,9 @@ body {
   background: var(--bg);
   color: var(--bodytext);
   line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-header {
@@ -43,6 +46,7 @@ header h1 .tagline {
 
 main {
   padding: 2rem 5%;
+  flex: 1;
 }
 
 .catalog-grid {
@@ -224,6 +228,7 @@ body.menu-open .site-nav {
   width: auto;
   vertical-align: middle;
   margin-right: 0.5rem;
+  aspect-ratio: 1 / 1;
 }
 
 /* About page */
@@ -239,4 +244,24 @@ footer {
   padding: 2rem 0;
   font-size: 0.8rem;
   color: #999;
+}
+
+.footer-links {
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #999;
+  text-decoration: none;
+}
+
+.footer-links a:visited {
+  color: #999;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
