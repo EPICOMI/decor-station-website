@@ -14,21 +14,15 @@
     "featured": true
   },
   {
-    "id": "wall-mirror-round-gold",
-    "name": "Round Gold Wall Mirror",
-    "category": "Mirrors",
-    "image": "/images/wall-mirror-round-gold.jpg",
-    "description": "Metal-framed round mirror, 60cm diameter, brushed gold finish.",
-    "price": "SGD 89",
+    "id": "diya-brass-2025",
+    "name": "Brass Diya in Potli",
+    "category": "Festive",
+    "images": [
+      "/images/diya-brass-01.jpg",
+      "/images/diya-brass-02.jpg"
+    ],
+    "description": "Brass and German Silver Diyas, in gift potlis.",
+    "price": "SGD 25",
     "featured": false
-  },
-  {
-    "id": "",
-    "name": "",
-    "category": "",
-    "image": "",
-    "description": "",
-    "price": "",
-    "featured": true
   }
 ]

@@ -8,10 +8,14 @@ permalink: "products/{{ item.id }}/"
 layout: base.njk
 ---
 
-{% if item.id %}
+{% if item.id and item.name %}
+<a href="{{ '/' | relativeUrl(page.url) }}" class="pd-back-link" aria-label="Back to homepage">
+  <span aria-hidden="true">&larr;</span>
+  <span>Back</span>
+</a>
+
 <div class="product-detail">
 
-  {# ── Left: image gallery ── #}
   <div class="pd-gallery">
     <button class="pd-arrow pd-prev" aria-label="Previous image">&#8249;</button>
 
@@ -38,11 +42,11 @@ layout: base.njk
     {% endif %}
   </div>
 
-  {# ── Right: details ── #}
   <div class="pd-info">
     <p class="category">{{ item.category }}</p>
     <h2>{{ item.name }}</h2>
     <p class="pd-desc">{{ item.description }}</p>
+
     {% if item.price %}
       <p class="price pd-price">{{ item.price }}</p>
     {% endif %}

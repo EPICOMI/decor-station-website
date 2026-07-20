@@ -5,10 +5,14 @@ layout: base.njk
 
 <div class="catalog-grid">
   {% for item in products %}
-    {% if item.id %}
-    <a href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}" class="product-card-link">
-    {% endif %}
-    <div class="product-card">
+    {% if item.id and item.name %}
+    <div
+      class="product-card product-card-clickable"
+      data-href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}"
+      tabindex="0"
+      role="link"
+      aria-label="View {{ item.name }}"
+    >
       <div class="image-cycler">
         {% if item.images %}
           {% for img in item.images %}
@@ -18,22 +22,46 @@ layout: base.njk
           <img src="{{ item.image }}" alt="{{ item.name }}" class="active">
         {% endif %}
       </div>
+
       <h2>{{ item.name }}</h2>
       <p class="category">{{ item.category }}</p>
       <p>{{ item.description }}</p>
+
       {% if item.price %}
         <p class="price">{{ item.price }}</p>
       {% endif %}
 
-      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
-         class="btn-buy" onclick="event.stopPropagation()">
+      <a
+        href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
+        class="btn-buy"
+      >
         Buy
       </a>
-      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
-         class="btn-info" onclick="event.stopPropagation()">
+
+      <a
+        href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
+        class="btn-info"
+      >
         Find out more
       </a>
     </div>
-    {% if item.id %}</a>{% endif %}
+    {% endif %}
   {% endfor %}
 </div>
+
+<script>
+  document.querySelectorAll(".product-card-clickable").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      window.location.href = card.dataset.href;
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        if (event.target.closest("a")) return;
+        event.preventDefault();
+        window.location.href = card.dataset.href;
+      }
+    });
+  });
+</script>

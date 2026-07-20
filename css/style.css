@@ -55,13 +55,6 @@ main {
   gap: 2rem;
 }
 
-/* Make the card wrapper link invisible */
-.product-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
 .product-card {
   background: #fff;
   border-radius: 12px;
@@ -72,6 +65,15 @@ main {
 
 .product-card:hover {
   transform: translateY(-4px);
+}
+
+.product-card-clickable {
+  cursor: pointer;
+}
+
+.product-card-clickable:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .product-card h2 {
@@ -277,6 +279,20 @@ footer {
    PRODUCT DETAIL PAGE
    ============================================= */
 
+.pd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.pd-back-link:hover {
+  text-decoration: underline;
+}
+
 .product-detail {
   display: flex;
   gap: 3rem;
@@ -288,7 +304,6 @@ footer {
   margin: 0 auto;
 }
 
-/* ── Gallery (left column) ── */
 .pd-gallery {
   flex: 0 0 55%;
   position: relative;
@@ -325,7 +340,6 @@ footer {
   opacity: 1;
 }
 
-/* Arrow buttons */
 .pd-arrow {
   position: absolute;
   top: 50%;
@@ -336,7 +350,7 @@ footer {
   width: 2.5rem;
   height: 2.5rem;
   font-size: 1.6rem;
-  line-height: 1;
+  line-height: 0.85;
   cursor: pointer;
   z-index: 10;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -345,6 +359,7 @@ footer {
   align-items: center;
   justify-content: center;
   color: var(--bodytext);
+  padding-bottom: 0.12rem;
 }
 
 .pd-arrow:hover {
@@ -354,7 +369,6 @@ footer {
 .pd-prev { left: 0.5rem; }
 .pd-next { right: 0.5rem; }
 
-/* Dot indicators */
 .pd-dots {
   display: flex;
   gap: 0.5rem;
@@ -374,7 +388,6 @@ footer {
   background: var(--accent);
 }
 
-/* ── Info panel (right column) ── */
 .pd-info {
   flex: 1;
   display: flex;
@@ -419,7 +432,6 @@ footer {
   font-size: 0.95rem;
 }
 
-/* ── Responsive: stack on mobile ── */
 @media (max-width: 700px) {
   .product-detail {
     flex-direction: column;
