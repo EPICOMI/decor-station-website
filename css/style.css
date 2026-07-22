@@ -418,6 +418,33 @@ footer {
   color: var(--bodytext);
 }
 
+.pd-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0.75rem;
+  background: #fdfaf7;
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
+.pd-spec-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.pd-spec-label {
+  font-weight: 600;
+}
+
+.pd-spec-value {
+  font-weight: 400;
+  color: var(--bodytext);
+}
+
 .pd-actions {
   display: flex;
   gap: 0.75rem;
