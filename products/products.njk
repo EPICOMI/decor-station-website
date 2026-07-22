@@ -17,10 +17,13 @@ layout: base.njk
 <div class="product-detail">
 
   <div class="pd-gallery">
+    {% set allImgs = item.images if item.images else ([item.image] if item.image else []) %}
+
+    {% if allImgs | length > 1 %}
     <button class="pd-arrow pd-prev" aria-label="Previous image">&#8249;</button>
+    {% endif %}
 
     <div class="pd-image-stage">
-      {% set allImgs = item.images if item.images else ([item.image] if item.image else []) %}
       {% for img in allImgs %}
         <img
           src="{{ img | relativeUrl(page.url) }}"
@@ -31,7 +34,9 @@ layout: base.njk
       {% endfor %}
     </div>
 
+    {% if allImgs | length > 1 %}
     <button class="pd-arrow pd-next" aria-label="Next image">&#8250;</button>
+    {% endif %}
 
     {% if allImgs | length > 1 %}
     <div class="pd-dots">
