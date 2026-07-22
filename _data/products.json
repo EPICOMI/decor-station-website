@@ -11,6 +11,8 @@
     ],
     "description": "Exclusive cutlery set, complete with artsy printing.",
     "price": "SGD 30",
+    "unitsAvailable": "40 sets",
+    "estimatedShippingTime": "8 Days",
     "featured": true
   },
   {
@@ -23,6 +25,248 @@
     ],
     "description": "Brass and German Silver Diyas, in gift potlis.",
     "price": "SGD 25",
+    "unitsAvailable": "40 sets",
+    "estimatedShippingTime": "8 Days",
+    "featured": false
+  },
+  {
+    "id": "item-A",
+    "name": "Placeholder Item A",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-A-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 48",
+    "unitsAvailable": "40 sets",
+    "estimatedShippingTime": "8 Days",
+    "featured": false
+  },
+  {
+    "id": "item-B",
+    "name": "Placeholder Item B",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-B-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated. (12in x 6in)",
+    "price": "SGD 158",
+    "unitsAvailable": "10 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-C",
+    "name": "Placeholder Item C",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-C-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 140",
+    "unitsAvailable": "15 piece",
+    "estimatedShippingTime": "8 Days",
+    "featured": false
+  },
+  {
+    "id": "item-D",
+    "name": "Placeholder Item D",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-D-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 160",
+    "unitsAvailable": "30 piece",
+    "estimatedShippingTime": "8 Days",
+    "featured": false
+  },
+  {
+    "id": "item-E",
+    "name": "Placeholder Item E",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-E-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 78",
+    "unitsAvailable": "40 piece",
+    "estimatedShippingTime": "8 Days",
+    "featured": false
+  },
+  {
+    "id": "item-F",
+    "name": "Placeholder Item F",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-F-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 158",
+    "unitsAvailable": "50 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-G",
+    "name": "Placeholder Item G",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-G-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 98",
+    "unitsAvailable": "50 piece",
+    "estimatedShippingTime": "7 Days",
+    "featured": false
+  },
+  {
+    "id": "item-H",
+    "name": "Placeholder Item H",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-H-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 48",
+    "unitsAvailable": "50 piece",
+    "estimatedShippingTime": "7 Days",
+    "featured": false
+  },
+  {
+    "id": "item-I",
+    "name": "Placeholder Item I",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-I-01.jpg",
+      "/images/item-I-02.jpg",
+      "/images/item-I-03.jpg"
+    ],
+    "description": "Placeholder description - to be updated. (DC 1003)",
+    "price": "SGD 78",
+    "unitsAvailable": "100 pieces",
+    "estimatedShippingTime": "7 Days",
+    "featured": false
+  },
+  {
+    "id": "item-J",
+    "name": "Placeholder Item J",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-J-01.jpg",
+      "/images/item-J-02.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 39",
+    "unitsAvailable": "200 piece",
+    "estimatedShippingTime": "7 Days",
+    "featured": false
+  },
+  {
+    "id": "item-K",
+    "name": "Placeholder Item K",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-K-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 39",
+    "unitsAvailable": "200 piece",
+    "estimatedShippingTime": "7 Days",
+    "featured": false
+  },
+  {
+    "id": "item-L",
+    "name": "Placeholder Item L",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-L-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 168",
+    "unitsAvailable": "8 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-M",
+    "name": "Placeholder Item M",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-M-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 188",
+    "unitsAvailable": "2 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-N",
+    "name": "Placeholder Item N",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-N-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 98",
+    "unitsAvailable": "15 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-O",
+    "name": "Placeholder Item O",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-O-01.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 98",
+    "unitsAvailable": "15 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-P",
+    "name": "Placeholder Item P",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-P-01.jpg",
+      "/images/item-P-02.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 94",
+    "unitsAvailable": "20 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-Q",
+    "name": "Placeholder Item Q",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-Q-01.jpg",
+      "/images/item-Q-02.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 118",
+    "unitsAvailable": "20 piece",
+    "estimatedShippingTime": "10 Days",
+    "featured": false
+  },
+  {
+    "id": "item-R",
+    "name": "Placeholder Item R",
+    "category": "Uncategorized",
+    "images": [
+      "/images/item-R-01.jpg",
+      "/images/item-R-02.jpg"
+    ],
+    "description": "Placeholder description - to be updated.",
+    "price": "SGD 98",
+    "unitsAvailable": "50 piece",
+    "estimatedShippingTime": "10 Days",
     "featured": false
   }
 ]
