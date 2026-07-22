@@ -10,7 +10,9 @@ layout: base.njk
 
 {% if item.id and item.name %}
 <a href="{{ '/' | relativeUrl(page.url) }}" class="pd-back-link" aria-label="Back to homepage">
-  <span aria-hidden="true">&larr;</span>
+  <svg class="pd-back-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 8H3M10 1.5L3 8l7 6.5" />
+  </svg>
   <span>Back</span>
 </a>
 
