@@ -32,10 +32,10 @@
   <div class="overlay" id="menuOverlay"></div>
 
   <nav class="site-nav" id="siteNav">
-    <a href="{{ '/' | relativeUrl(page.url) }}">Home</a>
-    <a href="{{ '/catalog/' | relativeUrl(page.url) }}">Catalog</a>
-    <a href="{{ '/about/' | relativeUrl(page.url) }}">About</a>
-    <a href="{{ '/contact/' | relativeUrl(page.url) }}">Contact</a>
+    <a href="{{ '/' | relativeUrl(page.url) }}"{% if page.url == '/' or page.url == '' %} class="active"{% endif %}>Home</a>
+    <a href="{{ '/catalog/' | relativeUrl(page.url) }}"{% if '/catalog/' in page.url or '/products/' in page.url %} class="active"{% endif %}>Catalog</a>
+    <a href="{{ '/about/' | relativeUrl(page.url) }}"{% if '/about/' in page.url %} class="active"{% endif %}>About</a>
+    <a href="{{ '/contact/' | relativeUrl(page.url) }}"{% if '/contact/' in page.url %} class="active"{% endif %}>Contact</a>
     <hr>
     <a href="{{ '/catalog/?cat=Cutlery' | relativeUrl(page.url) }}">Cutlery</a>
     <a href="{{ '/catalog/?cat=Festive' | relativeUrl(page.url) }}">Festive</a>
