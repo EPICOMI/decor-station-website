@@ -6,43 +6,36 @@ layout: base.njk
 <script src="{{ '/js/hero-scroll.js' | relativeUrl(page.url) }}" defer></script>
 
 <div class="scrolly-hero">
-  <div class="scrolly-visual">
-    <div class="scrolly-image-wrapper">
-      <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station Logo" class="hero-image" width="500" height="500" fetchpriority="high">
-    </div>
-  </div>
   <div class="scrolly-panels">
-    <section class="scrolly-panel" id="panel-1">
-      <div class="panel-inner">
-        <span class="panel-meta">Brand Statement</span>
+    <section class="scrolly-panel panel-odd" id="panel-1">
+      <div class="panel-inner panel-inner-first">
+        <div class="scrolly-image-wrapper">
+          <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station Logo" class="hero-image" width="500" height="500" fetchpriority="high">
+        </div>
         <blockquote class="panel-quote">“Where heritage craftsmanship meets everyday elegance.”</blockquote>
       </div>
     </section>
 
-    <section class="scrolly-panel" id="panel-2">
+    <section class="scrolly-panel panel-even" id="panel-2">
       <div class="panel-inner">
-        <span class="panel-meta">Category Signal</span>
         <blockquote class="panel-quote">“German silver. Brass. Wood. Curated in timeless forms for the modern home.”</blockquote>
       </div>
     </section>
 
-    <section class="scrolly-panel" id="panel-3">
+    <section class="scrolly-panel panel-odd" id="panel-3">
       <div class="panel-inner">
-        <span class="panel-meta">Occasion Hook</span>
         <blockquote class="panel-quote">“From festive rituals to wedding favours — thoughtfully made for every celebration.”</blockquote>
       </div>
     </section>
 
-    <section class="scrolly-panel" id="panel-4">
+    <section class="scrolly-panel panel-even" id="panel-4">
       <div class="panel-inner">
-        <span class="panel-meta">Value Proposition</span>
         <blockquote class="panel-quote">“Beautifully designed gifting, without the guesswork — budget-friendly to statement pieces.”</blockquote>
       </div>
     </section>
 
-    <section class="scrolly-panel" id="panel-5">
+    <section class="scrolly-panel panel-odd" id="panel-5">
       <div class="panel-inner">
-        <span class="panel-meta">Call to Action</span>
         <blockquote class="panel-quote">“Explore the collection. Custom and bulk orders welcome.”</blockquote>
         <div class="hero-actions">
           <a href="{{ '/catalog/' | relativeUrl(page.url) }}" class="btn-hero-primary">Shop Now</a>

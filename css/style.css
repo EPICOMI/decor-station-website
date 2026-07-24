@@ -489,40 +489,96 @@ footer {
    HERO HOMEPAGE (SCROLLYTELLING HERO)
    ============================================= */
 
-.scrolly-hero {
-  display: flex;
-  flex-direction: row;
-  min-height: calc(100vh - 120px);
-  position: relative;
-  max-width: 1300px;
-  margin: 0 auto;
-  gap: 4rem;
+/* Page-level scroll snapping and full-bleed layout for homepage */
+body.page-home {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
-.scrolly-visual {
-  flex: 1;
-  position: sticky;
-  top: 100px;
-  height: calc(100vh - 150px);
+body.page-home main {
+  padding: 0;
+}
+
+body.page-home .site-header {
+  scroll-snap-align: start;
+}
+
+body.page-home footer {
+  scroll-snap-align: end;
+}
+
+.scrolly-hero {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.scrolly-panels {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrolly-panel {
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 4rem 10%;
+  box-sizing: border-box;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Panel 1 needs adjustment to feel nicely centered given the header height */
+#panel-1 {
+  min-height: calc(100vh - 120px);
+}
+
+.panel-inner {
+  max-width: 800px;
+  width: 100%;
+  opacity: 0.15;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.panel-inner-first {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.scrolly-panel.is-active .panel-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternating right/left alignments for paragraphs */
+.scrolly-panel.panel-odd {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.scrolly-panel.panel-even {
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .scrolly-image-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 1;
+  margin-bottom: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .hero-image {
-  max-width: 100%;
+  width: 100%;
+  max-width: 280px;
   height: auto;
-  max-height: 420px;
+  aspect-ratio: 1;
   border-radius: 20px;
   object-fit: contain;
   filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4));
@@ -535,48 +591,11 @@ footer {
   100% { transform: translateY(0px); }
 }
 
-.scrolly-panels {
-  flex: 1.2;
-  display: flex;
-  flex-direction: column;
-}
-
-.scrolly-panel {
-  min-height: 75vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 4rem 0;
-  box-sizing: border-box;
-}
-
-.panel-inner {
-  max-width: 580px;
-  opacity: 0.15;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: opacity, transform;
-}
-
-.scrolly-panel.is-active .panel-inner {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.panel-meta {
-  display: inline-block;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
-  font-weight: 600;
-}
-
+/* Font size 40% larger than previous (2.2rem * 1.4 = 3.08rem -> 3.1rem) */
 .panel-quote {
-  font-size: 2.2rem;
+  font-size: 3.1rem;
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 1.35;
   color: var(--text);
   font-family: "Inter", sans-serif;
 }
@@ -586,6 +605,14 @@ footer {
   gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 2.5rem;
+}
+
+.scrolly-panel.panel-odd .hero-actions {
+  justify-content: flex-end;
+}
+
+.scrolly-panel.panel-even .hero-actions {
+  justify-content: flex-start;
 }
 
 .btn-hero-primary {
@@ -626,46 +653,25 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .scrolly-hero {
-    flex-direction: column;
-    gap: 0;
+  .scrolly-panel {
+    padding: 2rem 5%;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
-  .scrolly-visual {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    height: 35vh;
-    z-index: 5;
-    background: linear-gradient(to bottom, var(--bg) 80%, transparent);
-    padding-bottom: 20px;
+  .panel-inner-first {
+    align-items: center;
   }
 
   .scrolly-image-wrapper {
-    max-width: 200px;
-  }
-
-  .hero-image {
-    max-height: 180px;
-  }
-
-  .scrolly-panels {
-    margin-top: 35vh;
-    padding: 0 1rem;
-  }
-
-  .scrolly-panel {
-    min-height: 60vh;
     justify-content: center;
-    text-align: center;
   }
 
   .panel-quote {
-    font-size: 1.6rem;
+    font-size: 2.2rem;
   }
 
   .hero-actions {
-    justify-content: center;
+    justify-content: center !important;
   }
 }
