@@ -12,34 +12,35 @@ layout: base.njk
         <div class="scrolly-image-wrapper">
           <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station Logo" class="hero-image" width="500" height="500" fetchpriority="high">
         </div>
-        <blockquote class="panel-quote">“Where heritage craftsmanship meets everyday elegance.”</blockquote>
+        <blockquote class="panel-quote panel-1">“Where <span class="accent">heritage</span> craftsmanship meets everyday <span class="accent">elegance</span>.”</blockquote>
       </div>
     </section>
 
     <section class="scrolly-panel panel-even" id="panel-2">
       <div class="panel-inner">
-        <blockquote class="panel-quote">“German silver. Brass. Wood. Curated in timeless forms for the modern home.”</blockquote>
+        <blockquote class="panel-quote panel-2">“<span class="material">German silver</span><span class="divider">·</span> <span class="material">Brass</span><span class="divider">·</span> <span class="material">Wood</span>. Curated in timeless forms for the modern home.”</blockquote>
       </div>
     </section>
 
     <section class="scrolly-panel panel-odd" id="panel-3">
       <div class="panel-inner">
-        <blockquote class="panel-quote">“From festive rituals to wedding favours — thoughtfully made for every celebration.”</blockquote>
+        <blockquote class="panel-quote panel-3">“From <span class="highlight">festive rituals</span> to <span class="highlight">wedding favours</span> <span class="rule"></span> thoughtfully made for every celebration.”</blockquote>
       </div>
     </section>
 
     <section class="scrolly-panel panel-even" id="panel-4">
       <div class="panel-inner">
-        <blockquote class="panel-quote">“Beautifully designed gifting, without the guesswork — budget-friendly to statement pieces.”</blockquote>
+        <blockquote class="panel-quote panel-4">“Beautifully designed gifting, without the guesswork —<br>budget-friendly to statement pieces.”</blockquote>
       </div>
     </section>
 
     <section class="scrolly-panel panel-odd" id="panel-5">
       <div class="panel-inner">
-        <blockquote class="panel-quote">“Explore the collection. Custom and bulk orders welcome.”</blockquote>
-        <div class="hero-actions">
-          <a href="{{ '/catalog/' | relativeUrl(page.url) }}" class="btn-hero-primary">Shop Now</a>
-          <a href="{{ '/catalog/' | relativeUrl(page.url) }}" class="btn-hero-secondary">View Catalog</a>
+        <div class="panel-quote">
+          <a href="{{ '/catalog/' | relativeUrl(page.url) }}" class="panel-5">
+            <span class="cta-main">Explore the collection</span>
+          </a>
+          <div class="panel-5-sub">Custom and bulk orders welcome.</div>
         </div>
       </div>
     </section>
