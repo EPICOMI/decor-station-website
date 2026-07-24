@@ -1,71 +1,18 @@
 ---
-title: Catalog
+title: Home
 layout: base.njk
 ---
 
-<div class="catalog-grid">
-  {% for item in products %}
-    {% if item.id and item.name %}
-    <div
-      class="product-card product-card-clickable"
-      data-href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}"
-      tabindex="0"
-      role="link"
-      aria-label="View {{ item.name }}"
-    >
-      <div class="image-cycler">
-        {% if item.images %}
-          {% for img in item.images %}
-            <img src="{{ img | relativeUrl(page.url) }}" 
-            alt="{{ item.name }}" 
-            class="{{ 'active' if loop.first }}"
-            loading="eager"
-            {% if loop.first %}fetchpriority="high"{% endif %}>
-          {% endfor %}
-        {% elif item.image %}
-          <img src="{{ item.image | relativeUrl(page.url) }}" alt="{{ item.name }}">
-        {% endif %}
-      </div>
-
-      <h2>{{ item.name }}</h2>
-      <p class="category">{{ item.category }}</p>
-      <p>{{ item.description }}</p>
-
-      {% if item.price %}
-        <p class="price">{{ item.price }}</p>
-      {% endif %}
-
-      <a
-        href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
-        class="btn-buy"
-      >
-        Buy
-      </a>
-
-      <a
-        href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
-        class="btn-info"
-      >
-        Find out more
-      </a>
+<div class="hero-section">
+  <div class="hero-content">
+    <h1 class="hero-title">Elevate Your Space with <span>Decor Station</span></h1>
+    <p class="hero-subtitle">Discover curated premium home decor, exclusive cutlery, and exquisite festive gifts handcrafted to bring elegance and warmth to your home.</p>
+    <div class="hero-actions">
+      <a href="{{ '/catalog/' | relativeUrl(page.url) }}" class="btn-hero-primary">Shop Now</a>
+      <a href="{{ '/catalog/' | relativeUrl(page.url) }}" class="btn-hero-secondary">View Catalog</a>
     </div>
-    {% endif %}
-  {% endfor %}
+  </div>
+  <div class="hero-image-container">
+    <img src="{{ '/images/logo.png' | relativeUrl(page.url) }}" alt="Decor Station Logo" class="hero-image" width="500" height="500" fetchpriority="high">
+  </div>
 </div>
-
-<script>
-  document.querySelectorAll(".product-card-clickable").forEach((card) => {
-    card.addEventListener("click", (event) => {
-      if (event.target.closest("a")) return;
-      window.location.href = card.dataset.href;
-    });
-
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        if (event.target.closest("a")) return;
-        event.preventDefault();
-        window.location.href = card.dataset.href;
-      }
-    });
-  });
-</script>
