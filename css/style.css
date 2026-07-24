@@ -181,6 +181,12 @@ main {
 .hamburger-btn span:nth-child(2) { top: 10px; }
 .hamburger-btn span:nth-child(3) { top: 20px; }
 
+body.menu-open .site-header {
+  z-index: 1002;
+  background: transparent;
+  border-color: transparent;
+}
+
 body.menu-open .hamburger-btn span {
   background: var(--bodytext);
 }
