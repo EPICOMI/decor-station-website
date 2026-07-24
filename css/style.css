@@ -486,48 +486,106 @@ footer {
 }
 
 /* =============================================
-   HERO HOMEPAGE
+   HERO HOMEPAGE (SCROLLYTELLING HERO)
    ============================================= */
 
-.hero-section {
+.scrolly-hero {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 120px);
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 4rem;
+}
+
+.scrolly-visual {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+  height: calc(100vh - 150px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  justify-content: center;
 }
 
-.hero-content {
+.scrolly-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 420px;
+  border-radius: 20px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.scrolly-panels {
   flex: 1.2;
-  max-width: 650px;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
+.scrolly-panel {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4rem 0;
+  box-sizing: border-box;
 }
 
-.hero-title span {
+.panel-inner {
+  max-width: 580px;
+  opacity: 0.15;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.scrolly-panel.is-active .panel-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panel-meta {
+  display: inline-block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   color: var(--accent);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: #e5ddd3;
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
+.panel-quote {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--text);
+  font-family: "Inter", sans-serif;
 }
 
 .hero-actions {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  margin-top: 2.5rem;
 }
 
 .btn-hero-primary {
@@ -567,62 +625,47 @@ footer {
   transform: translateY(-2px);
 }
 
-.hero-image-container {
-  flex: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image {
-  max-width: 100%;
-  height: auto;
-  max-height: 380px;
-  border-radius: 20px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.35));
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@media (max-width: 850px) {
-  .hero-section {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 2.5rem;
-    padding: 2rem 1rem;
+@media (max-width: 900px) {
+  .scrolly-hero {
+    flex-direction: column;
+    gap: 0;
   }
 
-  .hero-content {
-    max-width: 100%;
+  .scrolly-visual {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 35vh;
+    z-index: 5;
+    background: linear-gradient(to bottom, var(--bg) 80%, transparent);
+    padding-bottom: 20px;
+  }
+
+  .scrolly-image-wrapper {
+    max-width: 200px;
+  }
+
+  .hero-image {
+    max-height: 180px;
+  }
+
+  .scrolly-panels {
+    margin-top: 35vh;
+    padding: 0 1rem;
+  }
+
+  .scrolly-panel {
+    min-height: 60vh;
+    justify-content: center;
     text-align: center;
   }
 
-  .hero-title {
-    font-size: 2.4rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+  .panel-quote {
+    font-size: 1.6rem;
   }
 
   .hero-actions {
     justify-content: center;
-  }
-
-  .hero-image {
-    max-height: 280px;
   }
 }
