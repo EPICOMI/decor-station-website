@@ -22,6 +22,10 @@ body {
   align-items: center;
   padding: 2rem 5%;
   border-bottom: 1px solid #e5ddd3;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
 }
 
 header {
@@ -139,9 +143,6 @@ main {
   color: var(--accent);
 }
 
-.site-header {
-  position: relative;
-}
 
 .hamburger-btn {
   background: none;
@@ -486,48 +487,133 @@ footer {
 }
 
 /* =============================================
-   HERO HOMEPAGE
+   HERO HOMEPAGE (SCROLLYTELLING HERO)
    ============================================= */
 
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 4rem 2rem;
-  max-width: 1200px;
+/* Page-level scroll snapping and full-bleed layout for homepage */
+body.page-home {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+body.page-home main {
+  padding: 0;
+}
+
+body.page-home .site-header {
+  scroll-snap-align: start;
+}
+
+body.page-home footer {
+  scroll-snap-align: end;
+}
+
+.scrolly-hero {
+  display: block;
+  position: relative;
+  width: 100%;
   margin: 0 auto;
 }
 
-.hero-content {
-  flex: 1.2;
-  max-width: 650px;
+.scrolly-panels {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrolly-panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 10%;
+  box-sizing: border-box;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Panel 1 needs adjustment to feel nicely centered given the header height */
+#panel-1 {
+  min-height: calc(100vh - 120px);
+}
+
+.panel-inner {
+  max-width: 800px;
+  width: 100%;
+  opacity: 0.15;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.panel-inner-first {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.scrolly-panel.is-active .panel-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternating right/left alignments for paragraphs */
+.scrolly-panel.panel-odd {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.scrolly-panel.panel-even {
+  justify-content: flex-start;
   text-align: left;
 }
 
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
+.scrolly-image-wrapper {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Font size 40% larger than previous (2.2rem * 1.4 = 3.08rem -> 3.1rem) */
+.panel-quote {
+  font-size: 3.1rem;
+  font-weight: 300;
+  line-height: 1.35;
   color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-}
-
-.hero-title span {
-  color: var(--accent);
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: #e5ddd3;
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
+  font-family: "Inter", sans-serif;
 }
 
 .hero-actions {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.scrolly-panel.panel-odd .hero-actions {
+  justify-content: flex-end;
+}
+
+.scrolly-panel.panel-even .hero-actions {
+  justify-content: flex-start;
 }
 
 .btn-hero-primary {
@@ -567,62 +653,26 @@ footer {
   transform: translateY(-2px);
 }
 
-.hero-image-container {
-  flex: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image {
-  max-width: 100%;
-  height: auto;
-  max-height: 380px;
-  border-radius: 20px;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.35));
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-@media (max-width: 850px) {
-  .hero-section {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 2.5rem;
-    padding: 2rem 1rem;
+@media (max-width: 900px) {
+  .scrolly-panel {
+    padding: 2rem 5%;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
-  .hero-content {
-    max-width: 100%;
-    text-align: center;
+  .panel-inner-first {
+    align-items: center;
   }
 
-  .hero-title {
-    font-size: 2.4rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-
-  .hero-actions {
+  .scrolly-image-wrapper {
     justify-content: center;
   }
 
-  .hero-image {
-    max-height: 280px;
+  .panel-quote {
+    font-size: 2.2rem;
+  }
+
+  .hero-actions {
+    justify-content: center !important;
   }
 }
