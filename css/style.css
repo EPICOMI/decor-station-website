@@ -22,6 +22,10 @@ body {
   align-items: center;
   padding: 2rem 5%;
   border-bottom: 1px solid #e5ddd3;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
 }
 
 header {
@@ -139,9 +143,6 @@ main {
   color: var(--accent);
 }
 
-.site-header {
-  position: relative;
-}
 
 .hamburger-btn {
   background: none;
