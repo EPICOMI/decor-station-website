@@ -24,6 +24,7 @@
   // Particles array to keep track of state
   let particles = [];
   let animationId = null;
+  let dpr = 1; // Device Pixel Ratio for High-DPI screen crispness
 
   // Active mouse state properties
   const mouse = {
@@ -47,24 +48,37 @@
   }
 
   // Pre-calculate randomized, deterministic-like rotation angles for each grid particle
-  // strictly randomly so it looks truly random and remains static on the particle.
+  // arranged in an out-of-phase staggered column pattern with doubled column density.
   function createGrid() {
     particles = [];
-    const width = canvas.width;
-    const height = canvas.height;
+
+    // Get canvas logical (CSS) dimensions for correct calculations
+    const logicalWidth = canvas.width / dpr;
+    const logicalHeight = canvas.height / dpr;
+
+    // Double the column density: horizontal spacing is half of base gridSpacing
+    const spacingX = CONFIG.gridSpacing / 2;
+    const spacingY = CONFIG.gridSpacing;
 
     // Determine grid columns and rows based on spacing
-    const cols = Math.ceil(width / CONFIG.gridSpacing) + 1;
-    const rows = Math.ceil(height / CONFIG.gridSpacing) + 1;
+    const cols = Math.ceil(logicalWidth / spacingX) + 2;
+    const rows = Math.ceil(logicalHeight / spacingY) + 2;
 
-    // Center grid offsets
-    const offsetX = (width - (cols - 1) * CONFIG.gridSpacing) / 2;
-    const offsetY = (height - (rows - 1) * CONFIG.gridSpacing) / 2;
+    // Center grid offsets (calculated in logical CSS pixels)
+    const offsetX = (logicalWidth - (cols - 1) * spacingX) / 2;
+    const offsetY = (logicalHeight - (rows - 1) * spacingY) / 2;
 
-    for (let c = 0; c < cols; c++) {
-      for (let r = 0; r < rows; r++) {
-        const baseX = offsetX + c * CONFIG.gridSpacing;
-        const baseY = offsetY + r * CONFIG.gridSpacing;
+    // Generate grid from indices starting at -1 to ensure full boundary coverage on resizing/staggering
+    for (let c = -1; c < cols + 1; c++) {
+      for (let r = -1; r < rows + 1; r++) {
+        const baseX = offsetX + c * spacingX;
+        let baseY = offsetY + r * spacingY;
+
+        // Create an out-of-phase layout:
+        // Shift vertical positions of odd-numbered columns halfway down
+        if (Math.abs(c) % 2 === 1) {
+          baseY += spacingY / 2;
+        }
 
         particles.push({
           baseX: baseX,
@@ -91,8 +105,15 @@
     if (!mainSection) return;
 
     const rect = mainSection.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    dpr = window.devicePixelRatio || 1;
+
+    // Scale canvas internal dimensions by DPR to ensure high resolution crispness
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+
+    // Set CSS dimensions to match CSS layout
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
 
     updateBaseScale();
     createGrid();
@@ -104,6 +125,10 @@
   // RENDER ENGINE
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Scale canvas drawings cleanly by DPR to look crisp on High-DPI screens
+    ctx.save();
+    ctx.scale(dpr, dpr);
 
     let elementsMoving = false;
     const imgWidth = imgSource.naturalWidth || 1095;
@@ -166,6 +191,9 @@
 
       ctx.restore();
     }
+
+    // Restore high-DPI scaling context
+    ctx.restore();
 
     // THE PERFORMANCE & SLEEP MECHANISM:
     // If element/grid items are active, request the next animation frame.
