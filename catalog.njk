@@ -3,6 +3,10 @@ title: Catalog
 layout: base.njk
 ---
 
+<link rel="stylesheet" href="{{ '/css/background.css' | relativeUrl(page.url) }}">
+
+{% include "background.njk" %}
+
 <div class="catalog-grid">
   {% for item in products %}
     {% if item.id and item.name %}
@@ -52,6 +56,8 @@ layout: base.njk
     {% endif %}
   {% endfor %}
 </div>
+
+<script src="{{ '/js/background.js' | relativeUrl(page.url) }}"></script>
 
 <script>
   document.querySelectorAll(".product-card-clickable").forEach((card) => {
