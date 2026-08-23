@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: EPICOMI/decor-station-website
+  branch: non-technical-automation # TODO: change to "main" once merged
+  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  auth_endpoint: auth
+
+# Lets you test the whole CMS locally with `npx @sveltia/cms-proxy`
+# alongside `npx @11ty/eleventy --serve`, no Cloudflare/GitHub OAuth needed.
+local_backend: true
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "_data/productEntries"
+    create: true
+    delete: false # keep "delete" disabled -- owner should hide (active: false), not delete
+    identifier_field: name # filename/id is auto-derived from this field, owner never sees "id"
+    format: json
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "string" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        field: { label: "Image", name: "image", widget: "image" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "General Settings"
+        file: "_data/site.json"
+        fields:
+          - label: "WhatsApp Number"
+            name: "whatsappNumber"
+            widget: "string"
+            hint: "Digits only, with country code, no + or spaces. Example: 6591234567"
+          - { label: "Contact Email", name: "contactEmail", widget: "string" }
+          - label: "About Page"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }

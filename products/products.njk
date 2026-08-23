@@ -62,11 +62,11 @@ layout: base.njk
     {% endif %}
 
     <div class="pd-actions">
-      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
+      <a href="https://wa.me/{{ site.whatsappNumber }}?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
          class="btn-buy">
         Buy
       </a>
-      <a href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
+      <a href="https://wa.me/{{ site.whatsappNumber }}?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
          class="btn-info">
         Find out more
       </a>
