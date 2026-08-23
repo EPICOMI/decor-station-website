@@ -22,15 +22,38 @@ collections:
     format: json
     fields:
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Category", name: "category", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "categories"
+        file: "categories"
+        value_field: "categories.*"
+        search_fields: ["categories.*"]
+        display_fields: ["categories.*"]
+        hint: 'Pick an existing category, or add a new one first under "Categories" in the sidebar.'
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Price", name: "price", widget: "string" }
       - label: "Images"
         name: "images"
         widget: "list"
         field: { label: "Image", name: "image", widget: "image" }
-      - { label: "Featured", name: "featured", widget: "boolean", default: false }
-      - { label: "Active", name: "active", widget: "boolean", default: true }
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Uncheck to hide this product from the website without deleting it."
+
+  - name: "categories"
+    label: "Categories"
+    files:
+      - name: "categories"
+        label: "Product Categories"
+        file: "_data/categories.json"
+        fields:
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            hint: "Add a new category name here first, then it becomes selectable on any product."
 
   - name: "settings"
     label: "Site Settings"

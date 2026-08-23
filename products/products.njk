@@ -52,9 +52,6 @@ layout: base.njk
   <div class="pd-info">
     <p class="category">{{ item.category }}</p>
     <h2>{{ item.name }}</h2>
-    {% if item.featured %}
-      <span class="badge-featured">Featured</span>
-    {% endif %}
     <p class="pd-desc">{{ item.description }}</p>
 
     {% if item.price %}

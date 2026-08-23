@@ -24,7 +24,6 @@ export default () => {
 
       return {
         active: true,
-        featured: false,
         ...raw,
         id,
       };

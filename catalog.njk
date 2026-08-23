@@ -3,12 +3,18 @@ title: Catalog
 layout: base.njk
 ---
 
+<p id="catalogFilterNotice" class="catalog-filter-notice" style="display:none;">
+  Showing: <strong id="catalogFilterName"></strong>
+  &mdash; <a href="{{ '/catalog/' | relativeUrl(page.url) }}">Clear filter</a>
+</p>
+
 <div class="catalog-grid">
   {% for item in products %}
     {% if item.active and item.id and item.name %}
     <div
       class="product-card product-card-clickable"
       data-href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}"
+      data-category="{{ item.category }}"
       tabindex="0"
       role="link"
       aria-label="View {{ item.name }}"
@@ -26,10 +32,6 @@ layout: base.njk
           <img src="{{ item.image | relativeUrl(page.url) }}" alt="{{ item.name }}">
         {% endif %}
       </div>
-
-      {% if item.featured %}
-        <span class="badge-featured">Featured</span>
-      {% endif %}
 
       <h2>{{ item.name }}</h2>
       <p class="category">{{ item.category }}</p>
@@ -72,4 +74,29 @@ layout: base.njk
       }
     });
   });
+
+  (function filterByCategory() {
+    const params = new URLSearchParams(window.location.search);
+    const filterCat = params.get("cat");
+    if (!filterCat) return;
+
+    const normalizedFilter = filterCat.trim().toLowerCase();
+    let matchCount = 0;
+
+    document.querySelectorAll(".product-card").forEach((card) => {
+      const cardCat = (card.dataset.category || "").trim().toLowerCase();
+      if (cardCat !== normalizedFilter) {
+        card.style.display = "none";
+      } else {
+        matchCount += 1;
+      }
+    });
+
+    const notice = document.getElementById("catalogFilterNotice");
+    const nameEl = document.getElementById("catalogFilterName");
+    if (notice && nameEl) {
+      nameEl.textContent = filterCat;
+      notice.style.display = "block";
+    }
+  })();
 </script>
