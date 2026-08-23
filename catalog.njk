@@ -3,10 +3,14 @@ title: Catalog
 layout: base.njk
 ---
 
-<p id="catalogFilterNotice" class="catalog-filter-notice" style="display:none;">
-  Showing: <strong id="catalogFilterName"></strong>
-  &mdash; <a href="{{ '/catalog/' | relativeUrl(page.url) }}">Clear filter</a>
-</p>
+<div class="category-filter-tags" id="categoryFilterTags">
+  {% for cat in activeCategories %}
+    <button type="button" class="cat-tag" data-category="{{ cat }}">
+      <span class="cat-tag-label">{{ cat }}</span>
+      <span class="cat-tag-remove" aria-hidden="true">&times;</span>
+    </button>
+  {% endfor %}
+</div>
 
 <div class="catalog-grid">
   {% for item in products %}
@@ -75,28 +79,42 @@ layout: base.njk
     });
   });
 
-  (function filterByCategory() {
+  (function categoryFilter() {
+    const tagButtons = Array.from(document.querySelectorAll(".cat-tag"));
+    if (tagButtons.length === 0) return;
+
     const params = new URLSearchParams(window.location.search);
-    const filterCat = params.get("cat");
-    if (!filterCat) return;
+    const initialCat = params.get("cat");
+    const selected = new Set();
 
-    const normalizedFilter = filterCat.trim().toLowerCase();
-    let matchCount = 0;
+    if (initialCat) {
+      selected.add(initialCat.trim().toLowerCase());
+    }
 
-    document.querySelectorAll(".product-card").forEach((card) => {
-      const cardCat = (card.dataset.category || "").trim().toLowerCase();
-      if (cardCat !== normalizedFilter) {
-        card.style.display = "none";
-      } else {
-        matchCount += 1;
-      }
+    function applyFilter() {
+      document.querySelectorAll(".product-card").forEach((card) => {
+        const cardCat = (card.dataset.category || "").trim().toLowerCase();
+        card.style.display = (selected.size === 0 || selected.has(cardCat)) ? "" : "none";
+      });
+
+      tagButtons.forEach((btn) => {
+        const btnCat = (btn.dataset.category || "").trim().toLowerCase();
+        btn.classList.toggle("cat-tag-selected", selected.has(btnCat));
+      });
+    }
+
+    tagButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const btnCat = (btn.dataset.category || "").trim().toLowerCase();
+        if (selected.has(btnCat)) {
+          selected.delete(btnCat);
+        } else {
+          selected.add(btnCat);
+        }
+        applyFilter();
+      });
     });
 
-    const notice = document.getElementById("catalogFilterNotice");
-    const nameEl = document.getElementById("catalogFilterName");
-    if (notice && nameEl) {
-      nameEl.textContent = filterCat;
-      notice.style.display = "block";
-    }
+    applyFilter();
   })();
 </script>
