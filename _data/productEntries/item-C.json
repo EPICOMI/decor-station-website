@@ -1,0 +1,11 @@
+{
+  "name": "Placeholder Item C",
+  "category": "Uncategorized",
+  "images": [
+    "/images/item-C-01.jpg"
+  ],
+  "description": "Placeholder description - to be updated.",
+  "price": "SGD 140",
+  "featured": false,
+  "active": true
+}

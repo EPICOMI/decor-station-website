@@ -5,7 +5,7 @@ layout: base.njk
 
 <div class="catalog-grid">
   {% for item in products %}
-    {% if item.id and item.name %}
+    {% if item.active and item.id and item.name %}
     <div
       class="product-card product-card-clickable"
       data-href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}"
@@ -26,6 +26,10 @@ layout: base.njk
           <img src="{{ item.image | relativeUrl(page.url) }}" alt="{{ item.name }}">
         {% endif %}
       </div>
+
+      {% if item.featured %}
+        <span class="badge-featured">Featured</span>
+      {% endif %}
 
       <h2>{{ item.name }}</h2>
       <p class="category">{{ item.category }}</p>

@@ -52,26 +52,14 @@ layout: base.njk
   <div class="pd-info">
     <p class="category">{{ item.category }}</p>
     <h2>{{ item.name }}</h2>
+    {% if item.featured %}
+      <span class="badge-featured">Featured</span>
+    {% endif %}
     <p class="pd-desc">{{ item.description }}</p>
 
     {% if item.price %}
       <p class="price pd-price">{{ item.price }}</p>
     {% endif %}
-
-    <div class="pd-specs">
-      {% if item.unitsAvailable %}
-        <div class="pd-spec-item">
-          <span class="pd-spec-label">Units Available:</span>
-          <span class="pd-spec-value">{{ item.unitsAvailable }}</span>
-        </div>
-      {% endif %}
-      {% if item.estimatedShippingTime %}
-        <div class="pd-spec-item">
-          <span class="pd-spec-label">Estimated Shipping:</span>
-          <span class="pd-spec-value">{{ item.estimatedShippingTime }}</span>
-        </div>
-      {% endif %}
-    </div>
 
     <div class="pd-actions">
       <a href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"

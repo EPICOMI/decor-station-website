@@ -1,0 +1,14 @@
+{
+  "name": "Exclusive Cutlery Set",
+  "category": "Cutlery",
+  "images": [
+    "/images/cutlery-sets-2025-01.jpg",
+    "/images/cutlery-sets-2025-02.jpg",
+    "/images/cutlery-sets-2025-03.jpg",
+    "/images/cutlery-sets-2025-04.jpg"
+  ],
+  "description": "Exclusive cutlery set, complete with artsy printing.",
+  "price": "SGD 30",
+  "featured": true,
+  "active": true
+}
