@@ -3,12 +3,22 @@ title: Catalog
 layout: base.njk
 ---
 
+<div class="category-filter-tags" id="categoryFilterTags">
+  {% for cat in activeCategories %}
+    <button type="button" class="cat-tag" data-category="{{ cat }}">
+      <span class="cat-tag-label">{{ cat }}</span>
+      <span class="cat-tag-remove" aria-hidden="true">&times;</span>
+    </button>
+  {% endfor %}
+</div>
+
 <div class="catalog-grid">
   {% for item in products %}
-    {% if item.id and item.name %}
+    {% if item.active and item.id and item.name %}
     <div
       class="product-card product-card-clickable"
       data-href="{{ ('/products/' + item.id + '/') | relativeUrl(page.url) }}"
+      data-category="{{ item.category }}"
       tabindex="0"
       role="link"
       aria-label="View {{ item.name }}"
@@ -36,14 +46,14 @@ layout: base.njk
       {% endif %}
 
       <a
-        href="https://wa.me/65XXXXXXXX?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
+        href="https://wa.me/{{ site.whatsappNumber }}?text=Hi!%20I'm%20interested%20in%20the%20{{ item.name | urlencode }}"
         class="btn-buy"
       >
         Buy
       </a>
 
       <a
-        href="https://wa.me/65XXXXXXXX?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
+        href="https://wa.me/{{ site.whatsappNumber }}?text=Hi!%20Can%20you%20tell%20me%20more%20about%20the%20{{ item.name | urlencode }}"
         class="btn-info"
       >
         Find out more
@@ -68,4 +78,43 @@ layout: base.njk
       }
     });
   });
+
+  (function categoryFilter() {
+    const tagButtons = Array.from(document.querySelectorAll(".cat-tag"));
+    if (tagButtons.length === 0) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const initialCat = params.get("cat");
+    const selected = new Set();
+
+    if (initialCat) {
+      selected.add(initialCat.trim().toLowerCase());
+    }
+
+    function applyFilter() {
+      document.querySelectorAll(".product-card").forEach((card) => {
+        const cardCat = (card.dataset.category || "").trim().toLowerCase();
+        card.style.display = (selected.size === 0 || selected.has(cardCat)) ? "" : "none";
+      });
+
+      tagButtons.forEach((btn) => {
+        const btnCat = (btn.dataset.category || "").trim().toLowerCase();
+        btn.classList.toggle("cat-tag-selected", selected.has(btnCat));
+      });
+    }
+
+    tagButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const btnCat = (btn.dataset.category || "").trim().toLowerCase();
+        if (selected.has(btnCat)) {
+          selected.delete(btnCat);
+        } else {
+          selected.add(btnCat);
+        }
+        applyFilter();
+      });
+    });
+
+    applyFilter();
+  })();
 </script>

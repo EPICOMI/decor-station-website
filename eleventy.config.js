@@ -2,6 +2,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("js");
+  eleventyConfig.addPassthroughCopy("admin");
 
   // Filter to make absolute URLs relative to the current page
   eleventyConfig.addFilter("relativeUrl", function(url, pageUrl) {
