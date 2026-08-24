@@ -2,7 +2,7 @@ backend:
   name: github
   repo: EPICOMI/decor-station-website
   branch: non-technical-automation # TODO: change to "main" once merged
-  base_url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+  base_url: https://sveltia-cms-auth.prakharverma2006.workers.dev
   auth_endpoint: auth
 
 # Lets you test the whole CMS locally with `npx @sveltia/cms-proxy`
