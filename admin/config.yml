@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: EPICOMI/decor-station-website
-  branch: non-technical-automation # TODO: change to "main" once merged
+  branch: main
   base_url: https://sveltia-cms-auth.prakharverma2006.workers.dev
   auth_endpoint: auth
 
