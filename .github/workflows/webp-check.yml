@@ -1,0 +1,38 @@
+name: WebP image check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "images/**"
+  pull_request:
+    paths:
+      - "images/**"
+
+jobs:
+  check-webp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Fail if non-WebP images are present
+        run: |
+          shopt -s globstar nullglob
+          offenders=()
+          for f in images/**/*.jpg images/**/*.jpeg images/**/*.png images/**/*.JPG images/**/*.JPEG images/**/*.PNG; do
+            case "$f" in
+              images/logo.png) continue ;;
+            esac
+            offenders+=("$f")
+          done
+          if [ ${#offenders[@]} -gt 0 ]; then
+            echo "The following images are not in WebP format:"
+            printf ' - %s\n' "${offenders[@]}"
+            echo ""
+            echo "Please convert these to .webp (e.g. cwebp -q 90 input.jpg -o output.webp) before committing,"
+            echo "or upload them through the Sveltia CMS media picker, which converts automatically."
+            exit 1
+          else
+            echo "All images in images/ are WebP (aside from the logo). Nice."
+          fi

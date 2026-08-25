@@ -12,6 +12,16 @@ local_backend: true
 media_folder: "images"
 public_folder: "/images"
 
+media_libraries:
+  all:
+    slugify_filename: true
+    transformations:
+      raster_image:
+        format: webp
+        quality: 90
+        width: 2048
+        height: 2048
+
 collections:
   - name: "products"
     label: "Products"
